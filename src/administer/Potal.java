@@ -33,8 +33,10 @@ public class Potal {
 		System.out.println("==== 학생 정보 출력 ====");
 		System.out.println("학생이름 : " + studentName.studentName);
 		System.out.println("학번 : " + studentName.getStudentID());
-		System.out.println("수강 내역");
-		for ()
+		System.out.println("===== 수강 내역 ====");
+		for (Student s : totalStudentList) {
+			s.showSubjectInfo();
+		}
 		
 	}
 
