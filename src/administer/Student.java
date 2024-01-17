@@ -3,23 +3,15 @@ package administer;
 import java.util.ArrayList;
 
 public class Student {
-	private static int serialNumber = 202310000;
 	private int studentID;
 	public String studentName;
-	private int grade;
-	private String address;
 	ArrayList<Subject> subjectList;
 	
 	
-	
-	public Student(String studentName, String address){
-		serialNumber++;
+	public Student(int serialNumber){
 		this.studentID = serialNumber;
-		this.studentName = studentName;
-		this.address = address;
-		this.grade = 1;
-		subjectList = new ArrayList<Subject>();
 	}
+	
 	public void setGrade(int grade) {
 		if (1 < grade && grade < 4){
 			this.grade = grade;
@@ -29,8 +21,8 @@ public class Student {
 	}
 	
 	
-	public void takeSubject(String subjectName, String score){
-		subjectList.add(new Subject(subjectName, score));
+	
+		
 	}
 	public int getStudentID() {
 		return this.studentID;

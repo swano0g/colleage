@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public class Subject {
 	String subjectName;
 	String professorName;
+	int subjectNumber;
 	ArrayList<Student> studentList;
 
-	public Subject(String subjectName, String professorName) {
+	public Subject(int subjectNumber, String subjectName, String professorName) {
 		this.subjectName = subjectName;
 		this.professorName = professorName;
+		this.subjectNumber = subjectNumber;
 	}
 	
 	public void enrolment(Student studentName) {
