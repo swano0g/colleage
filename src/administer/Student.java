@@ -1,15 +1,21 @@
 package administer;
-
 import java.util.ArrayList;
 
 public class Student {
 	private int studentID;
 	public String studentName;
-	ArrayList<Subject> subjectList;
+	private ArrayList<Subject> subjectList;
 	
 	
-	public Student(int serialNumber){
+	public Student(int serialNumber, String studentName){
 		this.studentID = serialNumber;
+		this.studentName = studentName;
+	}
+	
+	public void showSubjectInfo() {
+		for (Subject s : subjectList) {
+			System.out.println(s.subjectName + "(" + s.subjectNumber +", "+s.professorName+")");
+		}
 	}
 	
 	public void setGrade(int grade) {
@@ -20,25 +26,9 @@ public class Student {
 		}
 	}
 	
-	
-	
-		
-	}
 	public int getStudentID() {
 		return this.studentID;
 	}
 	
-	public static void main(String[] args) {
-		Student jimin = new Student("Chaejimin", "sinlimdong");
-		jimin.takeSubject("컴퓨터프로그래밍", "A+");
-		jimin.takeSubject("이산수학", "A0");
-		System.out.println(jimin.getStudentID());
-		for (Subject subject: jimin.subjectList) {
-			subject.showSubjectInfo();
-		}
-		
-		Student sangwoo = new Student("Leesangwoo", "samsungdong");
-		System.out.println(sangwoo.getStudentID());
-	}
 }
 	
