@@ -2,12 +2,20 @@ package administer;
 import java.util.ArrayList;
 
 public class Portal {
-	ArrayList<Student> totalStudentList;
-	ArrayList<Subject> totalSubjectList;
 	Portal one;
 	
-	private Portal() {}
+	ArrayList<Student> totalStudentList;
+	ArrayList<Subject> totalSubjectList;
 	
+	private int serialNumber = 202310000;
+	private final int serialNumberInitial = 202310001;
+
+	private int serialSubject = 0;
+	private final int serialSubjectInitial = 1;
+		
+	// singleton
+	private Portal() {}
+		
 	public getPortal() {
 		if (ont == null) {
 			one = new Portal();
@@ -17,11 +25,6 @@ public class Portal {
 	
 	
 	
-	private int serialNumber = 202310000;
-	private final int serialNumberInitial = 202310001;
-
-	private int serialSubject = 0;
-	private final int serialSubjectInitial = 1;
 	
 	public void studentAdd(String studentName){
 		serialNumber++;
@@ -36,6 +39,7 @@ public class Portal {
 		
 		System.out.println("추가됨");
 	}
+	
 	
 	public void showStudentInfo(Student studentName) {
 		System.out.println("==== 학생 정보 출력 ====");
