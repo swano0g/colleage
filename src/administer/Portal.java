@@ -1,12 +1,20 @@
 package administer;
 import java.util.ArrayList;
 
-public class Potal {
+public class Portal {
 	ArrayList<Student> totalStudentList;
 	ArrayList<Subject> totalSubjectList;
+	Portal one;
 	
+	private Portal() {}
 	
-	public Potal() {}
+	public getPortal() {
+		if (ont == null) {
+			one = new Portal();
+		}
+		return one;
+	}
+	
 	
 	
 	private int serialNumber = 202310000;
