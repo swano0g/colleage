@@ -21,6 +21,7 @@ public class Score {
 		put("S", 4.3);
 		put("F", 0.0);
 		put("U", 0.0);
+		put("I", 0.0);
 	}};
 	
 	public Score() {
@@ -30,7 +31,8 @@ public class Score {
 	public Score(String score) {
 		if (scoreTable.containsKey(score)) {
 			this.score = score;
-		} else {
+		} 
+		else {
 			System.out.println("오류입니다.");
 		}
 	}
@@ -42,8 +44,5 @@ public class Score {
 	public Double getNum() {
 		return scoreTable.get(this.score);
 	}
-	
-	
-	
 	
 }
