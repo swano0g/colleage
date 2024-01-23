@@ -1,35 +1,48 @@
 package administer;
-import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class Subject {
 	private String subjectName;
 	private String professorName;
 	private int subjectNumber;
-	private ArrayList<Student> studentList;
+	private int unit;
+	private HashMap<Student, String> studentList = new HashMap<>();
 
-	public Subject(int subjectNumber, String subjectName, String professorName) {
+	public Subject(int subjectNumber, String subjectName, String professorName, int unit) {
 		this.subjectName = subjectName;
 		this.professorName = professorName;
 		this.subjectNumber = subjectNumber;
+		this.unit = unit;
+		
 	}
 	
-	public void enrolment(Student studentName) {
-		studentList.add(studentName);
+	// getterFunction
+	public int getUnit() {
+		return this.unit;
+	}
+	public String getSubjectName() {
+		return this.subjectName;
+	}
+	public String getProfessorName() {
+		return this.professorName;
+	}
+	public int getSubjectNumber() {
+		return this.subjectNumber;
 	}
 	
-	public void printEnroledStudents() {
-		for(int i = 0; i < studentList.size(); i++) {
-			System.out.print(studentList.get(i) + " ");
-			System.out.print("\n");
-			System.out.print("Total: " + studentList.size());
-		}
+	
+	// construct (register, delete, showSubjectInfo) 
+	public void register(Student studentName) {
+		studentList.put(studentName, "I");
 	}
 	
-	public void showSubjectInfo() {
-		System.out.println(subjectName + " : ");
+	public HashMap<Student, String> showSubjectInfo() {
+		return studentList;
+	}
+	
+	public void delete(Student studentName) {
+		studentList.remove(studentName);
 	}
 
-	public String getSubjectName() {
-		return subjectName;
-	}
 }
