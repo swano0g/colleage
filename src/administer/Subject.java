@@ -1,33 +1,55 @@
 package administer;
-import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class Subject {
-	String subjectName;
-	String professorName;
-	int subjectNumber;
-	ArrayList<Student> studentList;
+	private String subjectName;
+	private String professorName;
+	private int subjectNumber;
+	private int unit;
+	private HashMap<Student, Score> studentList = new HashMap<>();
 
-	public Subject(int subjectNumber, String subjectName, String professorName) {
+	public Subject(int subjectNumber, String subjectName, String professorName, int unit) {
 		this.subjectName = subjectName;
 		this.professorName = professorName;
 		this.subjectNumber = subjectNumber;
+		this.unit = unit;
+		
 	}
 	
-	public void enrolment(Student studentName) {
-		studentList.add(studentName);
+	// getterFunction //
+	public int getUnit() {
+		return this.unit;
+	}
+	public String getSubjectName() {
+		return this.subjectName;
+	}
+	public String getProfessorName() {
+		return this.professorName;
+	}
+	public int getSubjectNumber() {
+		return this.subjectNumber;
 	}
 	
-	public void printEnroledStudents() {
-		for(int i = 0; i < studentList.size(); i++) {
-			System.out.print(studentList.get(i) + " ");
-			System.out.print("\n");
-			System.out.print("Total: " + studentList.size());
+	
+	// construct (register, delete, showSubjectInfo, setScore) 
+	public void register(Student studentName) {
+		studentList.put(studentName, new Score("I"));
+	}
+	
+	public HashMap<Student, Score> showSubjectInfo() {
+		return studentList;
+	}
+	
+	public void setScore(Student studentName, Score score) {
+		if (studentList.containsKey(studentName)) {
+				studentList.put(studentName, score);
+		} else{
+			System.out.println("student not found");
 		}
 	}
 	
-	public void showSubjectInfo() {
-		System.out.println(subjectName + " : ");
+	public void delete(Student studentName) {
+		studentList.remove(studentName);
 	}
-
-	
 }
