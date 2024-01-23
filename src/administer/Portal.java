@@ -4,8 +4,8 @@ import java.util.ArrayList;
 public class Portal {
 	private static Portal one;
 	
-	ArrayList<Student> totalStudentList;
-	ArrayList<Subject> totalSubjectList;
+	ArrayList<Student> totalStudentList = new ArrayList<>();
+	ArrayList<Subject> totalSubjectList = new ArrayList<>();
 	
 	private int serialNumber = 202310000;
 	private final int serialNumberInitial = 202310001;
@@ -27,7 +27,7 @@ public class Portal {
 	
 	public void studentAdd(String studentName){
 		serialNumber++;
-		totalStudentList.add(new Student(serialNumber, studentName));
+		this.totalStudentList.add(new Student(serialNumber, studentName));
 		
 		System.out.println("추가됨");
 	}

@@ -5,16 +5,16 @@ import java.util.Scanner;
 public class Main {
 	public void func1(Scanner sc, Portal p) {
 		System.out.println("enter student name:");
-		String name = sc.nextLine();
+		String name = sc.next();
 		
 		p.studentAdd(name);
 	}
 	
 	public void func2(Scanner sc, Portal p) {
 		System.out.println("enter subject name:");
-		String sbjname = sc.nextLine();
+		String sbjname = sc.next();
 		System.out.println("enter professor name:");
-		String prfname = sc.nextLine();
+		String prfname = sc.next();
 		System.out.println("enter subject unit:");
 		int unit = sc.nextInt();
 		
@@ -58,6 +58,7 @@ public class Main {
 				+ "\n4 showSubjectInfo"
 				+ "\n5 showStudentInfo"
 				+ "\n6 exit program"
+				+ "\n7 nothing"
 				+ "\ncommand input:";
 		
 		Portal p = Portal.getPortal();
@@ -89,7 +90,7 @@ public class Main {
 			default:
 				System.out.println("error");
 			}
-		sc.close();
 		}
+	sc.close();
 	}
 }
