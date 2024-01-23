@@ -23,6 +23,10 @@ public class Score {
 		put("U", 0.0);
 	}};
 	
+	public Score() {
+		this.score = "I";
+	}
+	
 	public Score(String score) {
 		if (scoreTable.containsKey(score)) {
 			this.score = score;
