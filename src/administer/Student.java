@@ -1,5 +1,4 @@
 package administer;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -8,12 +7,6 @@ public class Student {
 	public String studentName;
 	private HashMap<Subject, Score> scoreList = new HashMap<>();
 	
-	/**
-	 * member inner class ; Score 
-	 * type of scores: I (not given yet, default), S (pass), U (fail), A ~ D +0- 
-	 */
-	
-	
 	
 	// Constructor 
 	public Student(int serialNumber, String studentName){
@@ -21,29 +14,57 @@ public class Student {
 		this.studentName = studentName;
 	}
 	
+	
 	protected void enroleSubject(Subject s) {
-		scoreList.put(s, Score("I"));
+		scoreList.put(s,new Score());
 	}
+	
 	
 	protected void cancelSubject(Subject s) {
 		scoreList.remove(s);
 	}
 	
-	public void showSubjectInfo() {
-		for (Subject s : subjectList) {
-			System.out.println(s.getSubjectName + "(" + s.getSubjectNumber +", "+s.professorName+")");
+	
+	public void setGrade(Subject subject, Score score) {
+		if (scoreList.containsKey(subject)) {
+			scoreList.put(subject, score);
+		}
+		else {
+			System.out.println("subject not found");
 		}
 	}
 	
 	
-	public void setGrade(subject subject, String score) {
-		scoreList.put(subject, Score Score(score));
-		
+	public HashMap<Subject, Score> getScoreList() {
+		return scoreList;
 	}
 	
+	public String getStudentName() {
+		return studentName;
+	}
 	
 	public int getStudentID() {
-		return this.studentID;
+		return studentID;
+	}
+	
+	public double getGrade() {
+		int unitSum = 0;
+		double sum = 0;
+		
+		for (Subject key : scoreList.keySet()) {
+			Score value = scoreList.get(key);
+			if (value.getStr() == "I" ) {
+				continue;
+			}
+		    unitSum += key.getUnit();
+		    sum += key.getUnit() * value.getNum();
+		}
+		if (unitSum == 0) {
+			return 0d;
+		}
+		else {
+			return sum / unitSum;
+		}
 	}
 	
 }
