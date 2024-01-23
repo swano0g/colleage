@@ -44,5 +44,4 @@ public class Subject {
 	public void delete(Student studentName) {
 		studentList.remove(studentName);
 	}
-
 }
