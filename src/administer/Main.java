@@ -13,7 +13,7 @@ public class Main {
 				+ "\n1 program exit"
 				+ "\n2 add student"
 				+ "\n3 add subject"
-				+ "\n";
+				+ "\ncommand input:";
 		
 		while (program) {
 			System.out.println(initial);
