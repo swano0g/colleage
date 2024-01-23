@@ -37,7 +37,8 @@ public class Portal {
 		
 		System.out.println("추가됨");
 	}
-	public void printOfStudentInfo(Student studentName) {
+	public void printOfStudentInfo(int studId) {
+		Student studentName = totalStudentList.get(studId - serialNumberInitial);
 		System.out.println("===== 학생 기본 정보 =====");
 		System.out.println("학생이름 : " + studentName.getStudentName());
 		System.out.println("학  번 : " + studentName.getStudentID());
@@ -61,7 +62,8 @@ public class Portal {
 
 
 	
-	public void printOfSubjectInfo(Subject subjectName) {
+	public void printOfSubjectInfo(int subjId) {
+		Subject subjectName = totalSubjectList.get(subjId - serialSubjectInitial);
 		System.out.println("===== 과목 기본 정보 =====");
 		System.out.println("과목 이름(과목 번호) : " + subjectName.getSubjectName() + "(" + subjectName.getSubjectNumber() + ")");
 		System.out.println("교수 : " + subjectName.getProfessorName());
