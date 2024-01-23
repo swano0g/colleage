@@ -6,7 +6,6 @@ import java.util.HashMap;
 public class Student {
 	private int studentID;
 	public String studentName;
-	private ArrayList<Subject> subjectList;
 	private HashMap<Subject, Score> scoreList = new HashMap<>();
 	
 	/**
@@ -14,13 +13,6 @@ public class Student {
 	 * type of scores: I (not given yet, default), S (pass), U (fail), A ~ D +0- 
 	 */
 	
-	private class Score {
-		String score;
-		
-		private Score(String score) {
-			this.score = score;
-		}
-	}
 	
 	
 	// Constructor 
@@ -29,10 +21,17 @@ public class Student {
 		this.studentName = studentName;
 	}
 	
+	protected void enroleSubject(Subject s) {
+		scoreList.put(s, Score("I"));
+	}
+	
+	protected void cancelSubject(Subject s) {
+		scoreList.remove(s);
+	}
 	
 	public void showSubjectInfo() {
 		for (Subject s : subjectList) {
-			System.out.println(s.subjectName + "(" + s.subjectNumber +", "+s.professorName+")");
+			System.out.println(s.getSubjectName + "(" + s.getSubjectNumber +", "+s.professorName+")");
 		}
 	}
 	
