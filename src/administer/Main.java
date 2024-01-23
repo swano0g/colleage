@@ -31,6 +31,21 @@ public class Main {
 		
 		p.setScore(stdid, sbjid, score);
 	}
+
+	public void func4(Scanner sc, Portal p) {
+		System.out.println("Please enter the subject ID:");
+		int sbjid = sc.nextInt();
+		
+		p.printOfSubjectInfo(sbjid);
+	}
+	public void func5(Scanner sc, Portal p) {
+		System.out.println("Please enter the student ID:");
+		int stdid = sc.nextInt();
+		
+		p.printOfSubjectInfo(stdid);
+	}
+	
+
 	
 	public static void main(String[] args) {
 		boolean program = true;
@@ -39,9 +54,12 @@ public class Main {
 		String initial = "Student management integrated system"
 				+ "\nmade by LEE SANG WOO. CHAE JI MIN."
 				+ "\n\n============================="
-				+ "\n1 program exit"
-				+ "\n2 add student"
-				+ "\n3 add subject"
+				+ "\n1 add student"
+				+ "\n2 add subject"
+				+ "\n3 set score"
+				+ "\n4 showSubjectInfo"
+				+ "\n5 showStudentInfo"
+				+ "\n6 exit program"
 				+ "\ncommand input:";
 		
 		Portal p = Portal.getPortal();
@@ -54,11 +72,26 @@ public class Main {
 			switch (command) {
 			case 1:
 				mm.func1(sc, p);
+				break;
 			case 2:
 				mm.func2(sc, p);
+				break;
 			case 3:
 				mm.func3(sc, p);
+				break;
+			case 4:
+				mm.func4(sc, p);
+				break;
+			case 5:
+				mm.func5(sc, p);
+				break;
+			case 6:
+				program = false;
+				break;
+			default:
+				System.out.println("error");
 			}
+		sc.close();
 		}
 	}
 }
