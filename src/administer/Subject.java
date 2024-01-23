@@ -7,7 +7,7 @@ public class Subject {
 	private String professorName;
 	private int subjectNumber;
 	private int unit;
-	private HashMap<Student, String> studentList = new HashMap<>();
+	private HashMap<Student, Score> studentList = new HashMap<>();
 
 	public Subject(int subjectNumber, String subjectName, String professorName, int unit) {
 		this.subjectName = subjectName;
@@ -32,13 +32,21 @@ public class Subject {
 	}
 	
 	
-	// construct (register, delete, showSubjectInfo) 
+	// construct (register, delete, showSubjectInfo, setScore) 
 	public void register(Student studentName) {
-		studentList.put(studentName, "I");
+		studentList.put(studentName, new Score("I"));
 	}
 	
-	public HashMap<Student, String> showSubjectInfo() {
+	public HashMap<Student, Score> showSubjectInfo() {
 		return studentList;
+	}
+	
+	public void setScore(Student studentName, Score score) {
+		if (studentList.containsKey(studentName)) {
+				studentList.put(studentName, score);
+		} else{
+			System.out.println("student not found");
+		}
 	}
 	
 	public void delete(Student studentName) {
