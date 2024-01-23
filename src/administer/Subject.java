@@ -2,10 +2,10 @@ package administer;
 import java.util.ArrayList;
 
 public class Subject {
-	String subjectName;
-	String professorName;
-	int subjectNumber;
-	ArrayList<Student> studentList;
+	private String subjectName;
+	private String professorName;
+	private int subjectNumber;
+	private ArrayList<Student> studentList;
 
 	public Subject(int subjectNumber, String subjectName, String professorName) {
 		this.subjectName = subjectName;
@@ -29,5 +29,7 @@ public class Subject {
 		System.out.println(subjectName + " : ");
 	}
 
-	
+	public String getSubjectName() {
+		return subjectName;
+	}
 }
