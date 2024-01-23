@@ -2,7 +2,7 @@ package administer;
 import java.util.ArrayList;
 
 public class Portal {
-	Portal one;
+	private static Portal one;
 	
 	ArrayList<Student> totalStudentList;
 	ArrayList<Subject> totalSubjectList;
@@ -16,7 +16,7 @@ public class Portal {
 	// singleton
 	private Portal() {}
 		
-	public Portal getPortal() {
+	public static Portal getPortal() {
 		if (one == null) {
 			one = new Portal();
 		}
