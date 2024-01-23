@@ -25,7 +25,6 @@ public class Portal {
 	
 	
 	
-	
 	public void studentAdd(String studentName){
 		serialNumber++;
 		totalStudentList.add(new Student(serialNumber, studentName));
