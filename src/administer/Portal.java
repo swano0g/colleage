@@ -16,8 +16,8 @@ public class Portal {
 	// singleton
 	private Portal() {}
 		
-	public getPortal() {
-		if (ont == null) {
+	public Portal getPortal() {
+		if (one == null) {
 			one = new Portal();
 		}
 		return one;
@@ -48,7 +48,15 @@ public class Portal {
 		for (Student s : totalStudentList) {
 			s.showSubjectInfo();
 		}
-		
 	}
-
+	
+	public void setScore(int studId, int subjId, String score) {
+		Student std = totalStudentList.get(studId - serialNumberInitial);
+		Subject sbj = totalSubjectList.get(subjId - serialSubjectInitial);
+		Score scr = new Score(score);
+		
+		std.setScore(sbj, scr);
+		sbj.setScore(std, scr);
+	}
+	
 }

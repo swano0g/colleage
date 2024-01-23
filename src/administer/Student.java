@@ -25,7 +25,7 @@ public class Student {
 	}
 	
 	
-	public void setGrade(Subject subject, Score score) {
+	public void setScore(Subject subject, Score score) {
 		if (scoreList.containsKey(subject)) {
 			scoreList.put(subject, score);
 		}

@@ -17,7 +17,7 @@ public class Subject {
 		
 	}
 	
-	// getterFunction
+	// getterFunction //
 	public int getUnit() {
 		return this.unit;
 	}
@@ -44,5 +44,4 @@ public class Subject {
 	public void delete(Student studentName) {
 		studentList.remove(studentName);
 	}
-
 }
