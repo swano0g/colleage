@@ -16,8 +16,8 @@ public class Portal {
 	// singleton
 	private Portal() {}
 		
-	public getPortal() {
-		if (ont == null) {
+	public Portal getPortal() {
+		if (one == null) {
 			one = new Portal();
 		}
 		return one;
