@@ -31,23 +31,23 @@ public class Portal {
 		
 		System.out.println("추가됨");
 	}
-	
-	public void subjectAdd(String subjectName, String professorName) {
+	public void subjectAdd(String subjectName, String professorName, int unit) {
 		serialSubject ++;
-		totalSubjectList.add(new Subject(serialSubject, subjectName, professorName));
+		totalSubjectList.add(new Subject(serialSubject, subjectName, professorName, unit));
 		
 		System.out.println("추가됨");
 	}
-	
-	
-	public void showStudentInfo(Student studentName) {
-		System.out.println("==== 학생 정보 출력 ====");
-		System.out.println("학생이름 : " + studentName.studentName);
-		System.out.println("학번 : " + studentName.getStudentID());
-		System.out.println("===== 수강 내역 ====");
-		for (Student s : totalStudentList) {
-			s.showSubjectInfo();
+	public void printOfStudentInfo(Student studentName) {
+		System.out.println("===== 학생 기본 정보 =====");
+		System.out.println("학생이름 : " + studentName.getStudentName());
+		System.out.println("학  번 : " + studentName.getStudentID());
+		System.out.println("===== 학생 수강 정보 =====");
+		for (Subject key : studentName.getScoreList().keySet()) {
+			Score value = studentName.getScoreList().get(key);
+			System.out.println(key.getSubjectName() + " : " +value.getStr());
 		}
+		System.out.println("평점 : " + studentName.getGrade());
+
 	}
 	
 	public void setScore(int studId, int subjId, String score) {
@@ -58,5 +58,18 @@ public class Portal {
 		std.setScore(sbj, scr);
 		sbj.setScore(std, scr);
 	}
+
+
 	
+	public void printOfSubjectInfo(Subject subjectName) {
+		System.out.println("===== 과목 기본 정보 =====");
+		System.out.println("과목 이름(과목 번호) : " + subjectName.getSubjectName() + "(" + subjectName.getSubjectNumber() + ")");
+		System.out.println("교수 : " + subjectName.getProfessorName());
+		System.out.println("===== 수강 학생 목록 =====");
+		for (Student key : subjectName.showSubjectInfo().keySet()) {
+			Score value = subjectName.showSubjectInfo().get(key);
+			System.out.println(key.getStudentName() + " : " +value.getStr());
+		}
+		System.out.println("총 수강생 : " + subjectName.showSubjectInfo().size());
+	}
 }
