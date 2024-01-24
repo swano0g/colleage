@@ -31,6 +31,7 @@ public class Main {
 		
 		p.setScore(stdid, sbjid, score);
 	}
+  
 	public void func4(Scanner sc, Portal p) {
 		System.out.println("Please enter the subject ID:");
 		int sbjid = sc.nextInt();
@@ -43,7 +44,6 @@ public class Main {
 		
 		p.printOfSubjectInfo(stdid);
 	}
-	
 	
 	public static void main(String[] args) {
 		boolean program = true;
@@ -58,7 +58,6 @@ public class Main {
 				+ "\n4 showSubjectInfo"
 				+ "\n5 showStudentInfo"
 				+ "\n6 exit program"
-				+ "\n7 nothing"
 				+ "\ncommand input:";
 		
 		Portal p = Portal.getPortal();
@@ -90,6 +89,7 @@ public class Main {
 			default:
 				System.out.println("error");
 			}
+		sc.close();
 		}
 	sc.close();
 	}
