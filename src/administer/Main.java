@@ -75,6 +75,7 @@ public class Main {
 				+ "\n5 showStudentInfo"
 				+ "\n6 enroleSubject"
 				+ "\n7 cancelSubject"
+				+ "\n8 exit program"
 				+ "\ncommand input:";
 		
 		Portal p = Portal.getPortal();
@@ -105,6 +106,9 @@ public class Main {
 				break;
 			case 7:
 				mm.func7(sc, p);
+				break;
+			case 8:
+				program = false;
 			default:
 				System.out.println("error");
 			}
