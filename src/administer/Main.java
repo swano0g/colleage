@@ -27,7 +27,7 @@ public class Main {
 		System.out.println("enter subject ID:");
 		int sbjid = sc.nextInt();
 		System.out.println("enter score:");
-		String score = sc.nextLine();
+		String score = sc.next();
 		
 		p.setScore(stdid, sbjid, score);
 	}
@@ -43,6 +43,22 @@ public class Main {
 		
 		p.printOfSubjectInfo(stdid);
 	}
+	public void func6(Scanner sc, Portal p) {
+		System.out.println("Please enter the student ID:");
+		int stdid = sc.nextInt();
+		System.out.println("Please enter the subject ID:");
+		int subid = sc.nextInt();
+		
+		p.application(stdid, subid);
+	}
+	public void func7(Scanner sc, Portal p) {
+		System.out.println("Please enter the student ID:");
+		int stdid = sc.nextInt();
+		System.out.println("Please enter the subject ID:");
+		int subid = sc.nextInt();
+		
+		p.dropTheClass(stdid, subid);
+	}
 	
 	
 	public static void main(String[] args) {
@@ -57,8 +73,8 @@ public class Main {
 				+ "\n3 set score"
 				+ "\n4 showSubjectInfo"
 				+ "\n5 showStudentInfo"
-				+ "\n6 exit program"
-				+ "\n7 nothing"
+				+ "\n6 enroleSubject"
+				+ "\n7 cancelSubject"
 				+ "\ncommand input:";
 		
 		Portal p = Portal.getPortal();
@@ -85,8 +101,10 @@ public class Main {
 				mm.func5(sc, p);
 				break;
 			case 6:
-				program = false;
+				mm.func6(sc, p);
 				break;
+			case 7:
+				mm.func7(sc, p);
 			default:
 				System.out.println("error");
 			}

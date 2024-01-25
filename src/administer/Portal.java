@@ -24,19 +24,38 @@ public class Portal {
 	}
 	
 	
-	
+	// 학생 추가 
 	public void studentAdd(String studentName){
 		serialNumber++;
 		this.totalStudentList.add(new Student(serialNumber, studentName));
 		
 		System.out.println("추가됨");
 	}
+	// 과목 추가 
 	public void subjectAdd(String subjectName, String professorName, int unit) {
 		serialSubject ++;
 		totalSubjectList.add(new Subject(serialSubject, subjectName, professorName, unit));
 		
 		System.out.println("추가됨");
 	}
+	// 수강 신청 
+	public void application(int studId, int subjId) {
+		Student std = totalStudentList.get(studId - serialNumberInitial);
+		Subject sbj = totalSubjectList.get(subjId - serialSubjectInitial);
+		
+		std.enroleSubject(sbj);
+		sbj.register(std);
+		System.out.println("수강 신청 완료");
+	}
+	// 수강 취소 
+	public void dropTheClass(int stdId, int subId) {
+		Student std = totalStudentList.get(stdId - serialNumberInitial);
+		Subject sbj = totalSubjectList.get(subId - serialSubjectInitial);
+		
+		std.cancelSubject(sbj);
+		sbj.delete(std);
+	}
+	// 학생 정보 출력 
 	public void printOfStudentInfo(int studId) {
 		Student studentName = totalStudentList.get(studId - serialNumberInitial);
 		System.out.println("===== 학생 기본 정보 =====");
@@ -50,7 +69,7 @@ public class Portal {
 		System.out.println("평점 : " + studentName.getGrade());
 
 	}
-	
+	// 점수 부여 
 	public void setScore(int studId, int subjId, String score) {
 		Student std = totalStudentList.get(studId - serialNumberInitial);
 		Subject sbj = totalSubjectList.get(subjId - serialSubjectInitial);
@@ -59,9 +78,7 @@ public class Portal {
 		std.setScore(sbj, scr);
 		sbj.setScore(std, scr);
 	}
-
-
-	
+	// 과목 정보 출력 
 	public void printOfSubjectInfo(int subjId) {
 		Subject subjectName = totalSubjectList.get(subjId - serialSubjectInitial);
 		System.out.println("===== 과목 기본 정보 =====");
