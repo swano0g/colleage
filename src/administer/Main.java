@@ -3,13 +3,14 @@ package administer;
 import java.util.Scanner;
 
 public class Main {
+	// add student
 	public void func1(Scanner sc, Portal p) {
 		System.out.println("enter student name:");
 		String name = sc.next();
 		
 		p.studentAdd(name);
 	}
-	
+	// add subject
 	public void func2(Scanner sc, Portal p) {
 		System.out.println("enter subject name:");
 		String sbjname = sc.next();
@@ -20,10 +21,14 @@ public class Main {
 		
 		p.subjectAdd(sbjname, prfname, unit);
 	}
-	
+	// set score
 	public void func3(Scanner sc, Portal p) {
+		System.out.println("===== 전체 학생 목록 =====");
+		p.printOfTotalStudent();
 		System.out.println("enter student ID:");
 		int stdid = sc.nextInt();
+		System.out.println("===== 수강 내역 =====");
+		p.printOfStudentInfo(stdid);
 		System.out.println("enter subject ID:");
 		int sbjid = sc.nextInt();
 		System.out.println("enter score:");
@@ -31,29 +36,42 @@ public class Main {
 		
 		p.setScore(stdid, sbjid, score);
 	}
+	// showSubjectInfo
 	public void func4(Scanner sc, Portal p) {
 		System.out.println("Please enter the subject ID:");
 		int sbjid = sc.nextInt();
 		
 		p.printOfSubjectInfo(sbjid);
 	}
+	// showStudentInfo
 	public void func5(Scanner sc, Portal p) {
+		System.out.println("===== 전체 학생 목록 =====");
+		p.printOfTotalStudent();
 		System.out.println("Please enter the student ID:");
 		int stdid = sc.nextInt();
 		
-		p.printOfSubjectInfo(stdid);
+		p.printOfStudentInfo(stdid);
 	}
+	// applicationToSubject
 	public void func6(Scanner sc, Portal p) {
+		System.out.println("===== 전체 학생 목록 =====");
+		p.printOfTotalStudent();
 		System.out.println("Please enter the student ID:");
 		int stdid = sc.nextInt();
+		System.out.println("===== 전체 과목 목록 =====");
+		p.printOfTotalSubject();
 		System.out.println("Please enter the subject ID:");
 		int subid = sc.nextInt();
 		
 		p.application(stdid, subid);
 	}
+	// dropToSubject
 	public void func7(Scanner sc, Portal p) {
+		System.out.println("===== 전체 학생 목록 =====");
+		p.printOfTotalStudent();
 		System.out.println("Please enter the student ID:");
 		int stdid = sc.nextInt();
+		p.printOfStudentInfo(stdid);
 		System.out.println("Please enter the subject ID:");
 		int subid = sc.nextInt();
 		
@@ -73,8 +91,8 @@ public class Main {
 				+ "\n3 set score"
 				+ "\n4 showSubjectInfo"
 				+ "\n5 showStudentInfo"
-				+ "\n6 enroleSubject"
-				+ "\n7 cancelSubject"
+				+ "\n6 applicationToSubject"
+				+ "\n7 dropToSubject"
 				+ "\n8 exit program"
 				+ "\ncommand input:";
 		
@@ -110,7 +128,7 @@ public class Main {
 			case 8:
 				program = false;
 			default:
-				System.out.println("error");
+				System.out.println("종료되었습니다.");
 			}
 		}
 	sc.close();
