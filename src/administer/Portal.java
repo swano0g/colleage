@@ -4,11 +4,11 @@ import java.util.ArrayList;
 public class Portal {
 	private static Portal one;
 	
-	ArrayList<Student> totalStudentList;
-	ArrayList<Subject> totalSubjectList;
+	ArrayList<Student> totalStudentList = new ArrayList<>();
+	ArrayList<Subject> totalSubjectList = new ArrayList<>();
 	
-	private int serialNumber = 202310000;
-	private final int serialNumberInitial = 202310001;
+	private int serialNumber = 202410000;
+	private final int serialNumberInitial = 202410001;
 
 	private int serialSubject = 0;
 	private final int serialSubjectInitial = 1;
@@ -27,7 +27,7 @@ public class Portal {
 	// 학생 추가 
 	public void studentAdd(String studentName){
 		serialNumber++;
-		totalStudentList.add(new Student(serialNumber, studentName));
+		this.totalStudentList.add(new Student(serialNumber, studentName));
 		
 		System.out.println("추가됨");
 	}
@@ -39,6 +39,7 @@ public class Portal {
 		System.out.println("추가됨");
 	}
 	// 수강 신청 
+<<<<<<< HEAD
 	public void application(int stdId, int subId) {
 		Student std = totalStudentList.get(stdId - serialNumberInitial);
 		Subject sbj = totalSubjectList.get(subId - serialSubjectInitial);
@@ -48,6 +49,18 @@ public class Portal {
 	}
 	// 수강 취소
 	public void drop(int stdId, int subId) {
+=======
+	public void application(int studId, int subjId) {
+		Student std = totalStudentList.get(studId - serialNumberInitial);
+		Subject sbj = totalSubjectList.get(subjId - serialSubjectInitial);
+		
+		std.enroleSubject(sbj);
+		sbj.register(std);
+		System.out.println("수강 신청 완료");
+	}
+	// 수강 취소 
+	public void dropTheClass(int stdId, int subId) {
+>>>>>>> chae
 		Student std = totalStudentList.get(stdId - serialNumberInitial);
 		Subject sbj = totalSubjectList.get(subId - serialSubjectInitial);
 		
@@ -89,5 +102,17 @@ public class Portal {
 			System.out.println(key.getStudentName() + " : " +value.getStr());
 		}
 		System.out.println("총 수강생 : " + subjectName.showSubjectInfo().size());
+	}
+	// 전체 과목 출력
+	public void printOfTotalSubject() {
+		for (Subject sub : totalSubjectList) {
+			System.out.println(sub.getSubjectName()+"("+sub.getProfessorName()+", "+sub.getSubjectNumber()+")");
+		}
+	}
+	// 전체 학생 출력
+	public void printOfTotalStudent() {
+		for (Student stu : totalStudentList) {
+			System.out.println(stu.getStudentName()+"("+stu.getStudentID()+")");
+		}
 	}
 }
