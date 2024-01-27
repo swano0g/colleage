@@ -39,17 +39,6 @@ public class Portal {
 		System.out.println("추가됨");
 	}
 	// 수강 신청 
-<<<<<<< HEAD
-	public void application(int stdId, int subId) {
-		Student std = totalStudentList.get(stdId - serialNumberInitial);
-		Subject sbj = totalSubjectList.get(subId - serialSubjectInitial);
-		
-		std.enroleSubject(sbj);
-		sbj.register(std);
-	}
-	// 수강 취소
-	public void drop(int stdId, int subId) {
-=======
 	public void application(int studId, int subjId) {
 		Student std = totalStudentList.get(studId - serialNumberInitial);
 		Subject sbj = totalSubjectList.get(subjId - serialSubjectInitial);
@@ -60,7 +49,6 @@ public class Portal {
 	}
 	// 수강 취소 
 	public void dropTheClass(int stdId, int subId) {
->>>>>>> chae
 		Student std = totalStudentList.get(stdId - serialNumberInitial);
 		Subject sbj = totalSubjectList.get(subId - serialSubjectInitial);
 		
