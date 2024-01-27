@@ -64,7 +64,7 @@ public class Portal {
 		System.out.println("===== 학생 수강 정보 =====");
 		for (Subject key : studentName.getScoreList().keySet()) {
 			Score value = studentName.getScoreList().get(key);
-			System.out.println(key.getSubjectName() + " : " +value.getStr());
+			System.out.println(key.getSubjectName()+"("+key.getSubjectName()+", "+key.getUnit()+")" + " : " +value.getStr());
 		}
 		System.out.println("평점 : " + studentName.getGrade());
 
@@ -84,6 +84,7 @@ public class Portal {
 		System.out.println("===== 과목 기본 정보 =====");
 		System.out.println("과목 이름(과목 번호) : " + subjectName.getSubjectName() + "(" + subjectName.getSubjectNumber() + ")");
 		System.out.println("교수 : " + subjectName.getProfessorName());
+		System.out.println("단위 수 : "+ subjectName.getUnit());
 		System.out.println("===== 수강 학생 목록 =====");
 		for (Student key : subjectName.showSubjectInfo().keySet()) {
 			Score value = subjectName.showSubjectInfo().get(key);
@@ -102,5 +103,9 @@ public class Portal {
 		for (Student stu : totalStudentList) {
 			System.out.println(stu.getStudentName()+"("+stu.getStudentID()+")");
 		}
+	}
+	// 전체 학생 리스트 리턴 
+	public ArrayList<Student> returnToTotalStudent() {
+		return totalStudentList;
 	}
 }
