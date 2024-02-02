@@ -128,7 +128,11 @@ public class Main {
 			case 8:
 				program = false;
 			default:
+<<<<<<< HEAD
 				System.out.println("종료되었습니다.");
+=======
+				System.out.println("error : "+ command + " is none-existent comand.");
+>>>>>>> develop
 			}
 		}
 	sc.close();
