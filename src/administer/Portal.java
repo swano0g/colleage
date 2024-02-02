@@ -64,7 +64,7 @@ public class Portal {
 		System.out.println("===== 학생 수강 정보 =====");
 		for (Subject key : studentName.getScoreList().keySet()) {
 			Score value = studentName.getScoreList().get(key);
-			System.out.println(key.getSubjectName()+"("+key.getSubjectName()+", "+key.getUnit()+")" + " : " +value.getStr());
+			System.out.println(key.getSubjectName()+"("+key.getSubjectNumber()+", "+key.getUnit()+")" + " : " +value.getStr());
 		}
 		System.out.println("평점 : " + studentName.getGrade());
 
