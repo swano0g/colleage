@@ -32,8 +32,8 @@ public class Subject {
 	}
 	
 	
-	// construct (register, delete, showSubjectInfo, setScore) 
-	public void register(Student studentName) {
+	// construct (application, drop, showSubjectInfo, setScore) 
+	public void application(Student studentName) {
 		studentList.put(studentName, new Score());
 	}
 	
@@ -49,7 +49,7 @@ public class Subject {
 		}
 	}
 	
-	public void delete(Student studentName) {
+	public void drop(Student studentName) {
 		studentList.remove(studentName);
 	}
 }
