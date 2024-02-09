@@ -3,14 +3,13 @@ package administer;
 import java.util.Scanner;
 
 public class Main {
-	// add student
+	// add (student, subject, set score)
 	public void func1(Scanner sc, Portal p) {
 		System.out.println("enter student name:");
 		String name = sc.nextLine();
 		
 		p.studentAdd(name);
 	}
-	// add subject
 	public void func2(Scanner sc, Portal p) {
 		System.out.println("enter subject name:");
 		String sbjname = sc.nextLine();
@@ -21,7 +20,6 @@ public class Main {
 		
 		p.subjectAdd(sbjname, prfname, unit);
 	}
-	// set score
 	public void func3(Scanner sc, Portal p) {
 		System.out.println("===== Total Student Table =====");
 		p.printOfTotalStudent();
@@ -36,14 +34,14 @@ public class Main {
 		
 		p.setScore(stdid, sbjid, score);
 	}
-	// showSubjectInfo
+	
+	// show information(subject, student)
 	public void func4(Scanner sc, Portal p) {
 		System.out.println("Please enter the subject ID:");
 		int sbjid = Integer.parseInt(sc.nextLine());
 		
 		p.printOfSubjectInfo(sbjid);
 	}
-	// showStudentInfo
 	public void func5(Scanner sc, Portal p) {
 		System.out.println("===== Total Student Table =====");
 		p.printOfTotalStudent();
@@ -52,7 +50,8 @@ public class Main {
 		
 		p.printOfStudentInfo(stdid);
 	}
-	// applicationToSubject
+	
+	// subject (application, drop)
 	public void func6(Scanner sc, Portal p) {
 		System.out.println("===== Total Student Table =====");
 		p.printOfTotalStudent();
@@ -65,7 +64,6 @@ public class Main {
 		
 		p.application(stdid, subid);
 	}
-	// dropToSubject
 	public void func7(Scanner sc, Portal p) {
 		System.out.println("===== Total Student Table =====");
 		p.printOfTotalStudent();

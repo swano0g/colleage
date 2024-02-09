@@ -27,76 +27,100 @@ public class Portal {
 	// add (student, subject)
 	public void studentAdd(String studentName){
 		serialNumber++;
-		this.totalStudentList.add(new Student(serialNumber, studentName));
-		
-		System.out.println("추가됨");
+		totalStudentList.add(new Student(serialNumber, studentName));
+		System.out.println("Added");
 	}
 	public void subjectAdd(String subjectName, String professorName, int unit) {
 		serialSubject ++;
 		totalSubjectList.add(new Subject(serialSubject, subjectName, professorName, unit));
-		
-		System.out.println("추가됨");
+		System.out.println("Added");
 	}
 	
 	// student&subject (apply, drop, set score)
 	public void application(int studId, int subjId) {
+		try{
 		Student std = totalStudentList.get(studId - serialNumberInitial);
 		Subject sbj = totalSubjectList.get(subjId - serialSubjectInitial);
-		
 		std.application(sbj);
-		sbj.register(std);
-		System.out.println("수강 신청 완료");
+		sbj.application(std);
+		System.out.println("Complete");
+		} catch(IndexOutOfBoundsException e) {
+			System.out.println("Not exist.");
+		}
 	}
 	public void dropTheClass(int stdId, int subId) {
-		Student std = totalStudentList.get(stdId - serialNumberInitial);
-		Subject sbj = totalSubjectList.get(subId - serialSubjectInitial);
-		
-		std.drop(sbj);
-		sbj.delete(std);
+		try {	
+			Student std = totalStudentList.get(stdId - serialNumberInitial);
+			Subject sbj = totalSubjectList.get(subId - serialSubjectInitial);
+			std.drop(sbj);
+			sbj.drop(std);
+		} catch(IndexOutOfBoundsException e) {
+			System.out.println("Not exist.");
+		}
 	}
 	public void setScore(int studId, int subjId, String score) {
-		Student std = totalStudentList.get(studId - serialNumberInitial);
-		Subject sbj = totalSubjectList.get(subjId - serialSubjectInitial);
-		Score scr = new Score(score);
-		
-		std.setScore(sbj, scr);
-		sbj.setScore(std, scr);
+		try {
+			Student std = totalStudentList.get(studId - serialNumberInitial);
+			Subject sbj = totalSubjectList.get(subjId - serialSubjectInitial);
+			Score scr = new Score(score);
+			std.setScore(sbj, scr);
+			sbj.setScore(std, scr);
+		} catch(IndexOutOfBoundsException e) {
+			System.out.println("Not exist.");
+		}
 	}
 	
 	// print information(select student, select subject, total student, total subject)
 	public void printOfStudentInfo(int studId) {
-		Student studentName = totalStudentList.get(studId - serialNumberInitial);
-		System.out.println("===== 학생 기본 정보 =====");
-		System.out.println("학생이름 : " + studentName.getStudentName());
-		System.out.println("학  번 : " + studentName.getStudentID());
-		System.out.println("===== 학생 수강 정보 =====");
-		for (Subject key : studentName.getScoreList().keySet()) {
-			Score value = studentName.getScoreList().get(key);
-			System.out.println(key.getSubjectName()+"("+key.getSubjectNumber()+", "+key.getUnit()+")" + " : " +value.getStr());
+		try {
+			Student studentName = totalStudentList.get(studId - serialNumberInitial);
+			System.out.println("===== Student Information =====");
+			System.out.println("Student Name : " + studentName.getStudentName());
+			System.out.println("Student ID : " + studentName.getStudentID());
+			System.out.println("===== Coursework =====");
+			for (Subject key : studentName.getScoreList().keySet()) {
+				Score value = studentName.getScoreList().get(key);
+				System.out.println(key.getSubjectName()+"("+key.getSubjectNumber()+", "+key.getUnit()+")" + " : " +value.getStr());
+			}
+			System.out.println("Total Grade : " + studentName.getGrade());
+		} catch(IndexOutOfBoundsException e) {
+			System.out.println("Student ID is not exist.");
 		}
-		System.out.println("평점 : " + studentName.getGrade());
 	}
 	public void printOfSubjectInfo(int subjId) {
-		Subject subjectName = totalSubjectList.get(subjId - serialSubjectInitial);
-		System.out.println("===== 과목 기본 정보 =====");
-		System.out.println("과목 이름(과목 번호) : " + subjectName.getSubjectName() + "(" + subjectName.getSubjectNumber() + ")");
-		System.out.println("교수 : " + subjectName.getProfessorName());
-		System.out.println("단위 수 : "+ subjectName.getUnit());
-		System.out.println("===== 수강 학생 목록 =====");
-		for (Student key : subjectName.showSubjectInfo().keySet()) {
-			Score value = subjectName.showSubjectInfo().get(key);
-			System.out.println(key.getStudentName() + " : " +value.getStr());
+		try {
+			Subject subjectName = totalSubjectList.get(subjId - serialSubjectInitial);
+			System.out.println("===== Subject Information =====");
+			System.out.println("Subject Name(Subject ID) : " + subjectName.getSubjectName() + "(" + subjectName.getSubjectNumber() + ")");
+			System.out.println("Professor Name : " + subjectName.getProfessorName());
+			System.out.println("Unit : "+ subjectName.getUnit());
+			System.out.println("===== List of students =====");
+			for (Student key : subjectName.showSubjectInfo().keySet()) {
+				Score value = subjectName.showSubjectInfo().get(key);
+				System.out.println(key.getStudentName() + " : " +value.getStr());
+			}
+			System.out.println("Total Number : " + subjectName.showSubjectInfo().size());
+		} catch(IndexOutOfBoundsException e) {
+			System.out.println("Subject ID is not exist.");
 		}
-		System.out.println("총 수강생 : " + subjectName.showSubjectInfo().size());
+		
 	}
 	public void printOfTotalSubject() {
-		for (Subject sub : totalSubjectList) {
-			System.out.println(sub.getSubjectName()+"("+sub.getProfessorName()+", "+sub.getSubjectNumber()+")");
+		if (totalStudentList.isEmpty()) {
+			System.out.println("Studentlist is empty");
+		} else {
+			for (Subject sub : totalSubjectList) {
+				System.out.println(sub.getSubjectName()+"("+sub.getProfessorName()+", "+sub.getSubjectNumber()+")");
+			}
 		}
 	}
 	public void printOfTotalStudent() {
-		for (Student stu : totalStudentList) {
-			System.out.println(stu.getStudentName()+"("+stu.getStudentID()+")");
+		if (totalSubjectList.isEmpty()) {
+			System.out.println("Subjectlist is empty");
+		} else {
+			for (Student stu : totalStudentList) {
+				System.out.println(stu.getStudentName()+"("+stu.getStudentID()+")");
+			}
 		}
 	}
 }

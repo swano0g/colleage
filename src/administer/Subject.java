@@ -32,9 +32,9 @@ public class Subject {
 	}
 	
 	
-	// construct (register, delete, showSubjectInfo, setScore) 
-	public void register(Student studentName) {
-		studentList.put(studentName, new Score("I"));
+	// construct (application, drop, showSubjectInfo, setScore) 
+	public void application(Student studentName) {
+		studentList.put(studentName, new Score());
 	}
 	
 	public HashMap<Student, Score> showSubjectInfo() {
@@ -49,7 +49,7 @@ public class Subject {
 		}
 	}
 	
-	public void delete(Student studentName) {
+	public void drop(Student studentName) {
 		studentList.remove(studentName);
 	}
 }
