@@ -34,7 +34,7 @@ public class Subject {
 	
 	// construct (register, delete, showSubjectInfo, setScore) 
 	public void register(Student studentName) {
-		studentList.put(studentName, new Score("I"));
+		studentList.put(studentName, new Score());
 	}
 	
 	public HashMap<Student, Score> showSubjectInfo() {
