@@ -8,19 +8,52 @@ public class Student {
 	private HashMap<Subject, Score> scoreList = new HashMap<>();
 	
 	
-	// Constructor 
 	public Student(int serialNumber, String studentName){
 		this.studentID = serialNumber;
 		this.studentName = studentName;
 	}
 	
+	// getterFuntion
+		public HashMap<Subject, Score> getScoreList() {
+			return scoreList;
+		}
+		
+		public String getStudentName() {
+			return studentName;
+		}
+		
+		public int getStudentID() {
+			return studentID;
+		}
+		
+		public double getGrade() {
+			int unitSum = 0;
+			double sum = 0;
+			
+			for (Subject key : scoreList.keySet()) {
+				Score value = scoreList.get(key);
+				if (value.getStr() == "I" ) {
+					continue;
+				}
+			    unitSum += key.getUnit();
+			    sum += key.getUnit() * value.getNum();
+			}
+			if (unitSum == 0) {
+				return 0d;
+			}
+			else {
+				return sum / unitSum;
+			}
+		}
 	
-	protected void enroleSubject(Subject s) {
-		scoreList.put(s,new Score());
+		
+	// construct (applicarionSubject, drop, setScore)
+	protected void application(Subject s) {
+		scoreList.put(s, new Score());
 	}
 	
 	
-	protected void cancelSubject(Subject s) {
+	protected void drop(Subject s) {
 		scoreList.remove(s);
 	}
 	
@@ -34,38 +67,6 @@ public class Student {
 		}
 	}
 	
-	
-	public HashMap<Subject, Score> getScoreList() {
-		return scoreList;
-	}
-	
-	public String getStudentName() {
-		return studentName;
-	}
-	
-	public int getStudentID() {
-		return studentID;
-	}
-	
-	public double getGrade() {
-		int unitSum = 0;
-		double sum = 0;
-		
-		for (Subject key : scoreList.keySet()) {
-			Score value = scoreList.get(key);
-			if (value.getStr() == "I" ) {
-				continue;
-			}
-		    unitSum += key.getUnit();
-		    sum += key.getUnit() * value.getNum();
-		}
-		if (unitSum == 0) {
-			return 0d;
-		}
-		else {
-			return sum / unitSum;
-		}
-	}
 	
 }
 	

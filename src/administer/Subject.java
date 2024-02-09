@@ -17,7 +17,7 @@ public class Subject {
 		
 	}
 	
-	// getterFunction //
+	// getterFunction 
 	public int getUnit() {
 		return this.unit;
 	}

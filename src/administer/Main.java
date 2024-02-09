@@ -6,31 +6,31 @@ public class Main {
 	// add student
 	public void func1(Scanner sc, Portal p) {
 		System.out.println("enter student name:");
-		String name = sc.next();
+		String name = sc.nextLine();
 		
 		p.studentAdd(name);
 	}
 	// add subject
 	public void func2(Scanner sc, Portal p) {
 		System.out.println("enter subject name:");
-		String sbjname = sc.next();
+		String sbjname = sc.nextLine();
 		System.out.println("enter professor name:");
-		String prfname = sc.next();
+		String prfname = sc.nextLine();
 		System.out.println("enter subject unit:");
-		int unit = sc.nextInt();
+		int unit = Integer.parseInt(sc.nextLine());
 		
 		p.subjectAdd(sbjname, prfname, unit);
 	}
 	// set score
 	public void func3(Scanner sc, Portal p) {
-		System.out.println("===== 전체 학생 목록 =====");
+		System.out.println("===== Total Student Table =====");
 		p.printOfTotalStudent();
 		System.out.println("enter student ID:");
-		int stdid = sc.nextInt();
-		System.out.println("===== 수강 내역 =====");
+		int stdid = Integer.parseInt(sc.nextLine());
+		System.out.println("===== Application Table =====");
 		p.printOfStudentInfo(stdid);
 		System.out.println("enter subject ID:");
-		int sbjid = sc.nextInt();
+		int sbjid = Integer.parseInt(sc.nextLine());
 		System.out.println("enter score:");
 		String score = sc.next();
 		
@@ -39,35 +39,35 @@ public class Main {
 	// showSubjectInfo
 	public void func4(Scanner sc, Portal p) {
 		System.out.println("Please enter the subject ID:");
-		int sbjid = sc.nextInt();
+		int sbjid = Integer.parseInt(sc.nextLine());
 		
 		p.printOfSubjectInfo(sbjid);
 	}
 	// showStudentInfo
 	public void func5(Scanner sc, Portal p) {
-		System.out.println("===== 전체 학생 목록 =====");
+		System.out.println("===== Total Student Table =====");
 		p.printOfTotalStudent();
 		System.out.println("Please enter the student ID:");
-		int stdid = sc.nextInt();
+		int stdid = Integer.parseInt(sc.nextLine());
 		
 		p.printOfStudentInfo(stdid);
 	}
 	// applicationToSubject
 	public void func6(Scanner sc, Portal p) {
-		System.out.println("===== 전체 학생 목록 =====");
+		System.out.println("===== Total Student Table =====");
 		p.printOfTotalStudent();
 		System.out.println("Please enter the student ID:");
-		int stdid = sc.nextInt();
-		System.out.println("===== 전체 과목 목록 =====");
+		int stdid = Integer.parseInt(sc.nextLine());
+		System.out.println("===== Total Subject Table =====");
 		p.printOfTotalSubject();
 		System.out.println("Please enter the subject ID:");
-		int subid = sc.nextInt();
+		int subid = Integer.parseInt(sc.nextLine());
 		
 		p.application(stdid, subid);
 	}
 	// dropToSubject
 	public void func7(Scanner sc, Portal p) {
-		System.out.println("===== 전체 학생 목록 =====");
+		System.out.println("===== Total Student Table =====");
 		p.printOfTotalStudent();
 		System.out.println("Please enter the student ID:");
 		int stdid = sc.nextInt();
@@ -89,10 +89,10 @@ public class Main {
 				+ "\n1 add student"
 				+ "\n2 add subject"
 				+ "\n3 set score"
-				+ "\n4 showSubjectInfo"
-				+ "\n5 showStudentInfo"
-				+ "\n6 applicationToSubject"
-				+ "\n7 dropToSubject"
+				+ "\n4 show subject info"
+				+ "\n5 show student info"
+				+ "\n6 application to subject"
+				+ "\n7 drop to subject"
 				+ "\n8 exit program"
 				+ "\ncommand input:";
 		
@@ -101,7 +101,7 @@ public class Main {
 		
 		while (program) {
 			System.out.println(initial);
-			int command = sc.nextInt();
+			int command = Integer.parseInt(sc.nextLine());
 			
 			switch (command) {
 			case 1:
@@ -127,12 +127,10 @@ public class Main {
 				break;
 			case 8:
 				program = false;
+				System.out.println("End program");
+				break;
 			default:
-<<<<<<< HEAD
-				System.out.println("종료되었습니다.");
-=======
 				System.out.println("error : "+ command + " is none-existent comand.");
->>>>>>> develop
 			}
 		}
 	sc.close();
